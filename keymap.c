@@ -52,12 +52,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [1] = LAYOUT_split_3x6_3(
-  //,-------------------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB, XXXXXXX, XXXXXXX,     XXXXXXX,     XXXXXXX, XXXXXXX,                      XXXXXXX,   KC_UP,  XXXXXXX, XXXXXXX, KC_PSCR,  KC_DEL,
+  //,-------------------------------------------------------------.                    ,------------------------------------------------------.
+       KC_TAB, XXXXXXX, XXXXXXX,     XXXXXXX,     XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX,    KC_UP, XXXXXXX, KC_PSCR,  KC_DEL,
   //|--------+--------+--------+------------+------------+--------|                    |--------+--------+---------+--------+--------+--------|
-      KC_LCTL, XXXXXXX, XXXXXXX, TD(TD_NAVL), TD(TD_NAVR), XXXXXXX,                      KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX, KC_PGUP, KC_HOME,
+      KC_LCTL, XXXXXXX, XXXXXXX, TD(TD_NAVL), TD(TD_NAVR), XXXXXXX,                      XXXXXXX, KC_LEFT,  KC_DOWN,KC_RIGHT, KC_PGUP, KC_HOME,
   //|--------+--------+--------+------------+------------+--------|                    |--------+--------+---------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX,     XXXXXXX,     XXXXXXX, XXXXXXX,                      KC_MPRV,  KC_MPLY, KC_MNXT, XXXXXXX, KC_PGDN,  KC_END,
+      KC_LSFT, XXXXXXX, XXXXXXX,     XXXXXXX,     XXXXXXX, XXXXXXX,                      XXXXXXX, KC_MPRV,  KC_MPLY, KC_MNXT, KC_PGDN,  KC_END,
   //|--------+--------+--------+------------+------------+--------+--------|  |--------+--------+--------+---------+--------+--------+--------|
                                                   KC_LGUI, _______,  KC_SPC,     KC_ENT,   MO(4), TD(TD_ALT)
                                               //`--------------------------'  `--------------------------'
@@ -65,11 +65,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------------.
-      XXXXXXX,   KC_AT, XXXXXXX, KC_LPRN, KC_RPRN, XXXXXXX,                      KC_PERC, XXXXXXX, KC_PIPE, XXXXXXX, XXXXXXX,       KC_BSPC,
+      XXXXXXX,   KC_AT, XXXXXXX, KC_LPRN, KC_RPRN, XXXXXXX,                      KC_PERC, XXXXXXX, KC_PIPE,  KC_EQL, XXXXXXX,       KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------------|
-      XXXXXXX, KC_TILD, XXXXXXX, KC_LCBR, KC_RCBR, XXXXXXX,                       KC_DLR, XXXXXXX, KC_AMPR, XXXXXXX, XXXXXXX,       KC_MINS,
+      XXXXXXX, KC_TILD, XXXXXXX, KC_LCBR, KC_RCBR, XXXXXXX,                       KC_DLR, XXXXXXX, KC_AMPR, KC_EXLM, XXXXXXX,       KC_MINS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------------|
-      XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_RBRC, XXXXXXX,                      KC_HASH, XXXXXXX, KC_EXLM, XXXXXXX, XXXXXXX, LSFT(KC_MINS),
+      XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_RBRC, XXXXXXX,                      KC_HASH, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LSFT(KC_MINS),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------------|
                                           KC_LGUI,   MO(4),  KC_SPC,     KC_ENT, _______, TD(TD_ALT)
                                       //`--------------------------'  `--------------------------'
