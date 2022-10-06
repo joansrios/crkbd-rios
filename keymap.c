@@ -29,25 +29,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 enum {
     TD_TILD,
     TD_SLH,
-    TD_TESC,
     TD_ALT,
-    TD_ADD,
-    TD_MUL,
     TD_NAVL,
     TD_NAVR,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x6_3(
-  //,--------------------------------------------------------.                    ,------------------------------------------------------------.
-   TD(TD_TESC),   KC_Q,   KC_W,   KC_E,   KC_R,   LT(3, KC_T),                         KC_Y,    KC_U,    KC_I,    KC_O,       KC_P,     KC_BSPC,
-  //|---------+-------+-------+-------+-------+--------------|                    |--------+--------+--------+--------+-----------+------------|
-       KC_LCTL,   KC_A,   KC_S,   KC_D,   KC_F,          KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, TD(TD_TILD),
-  //|---------+-------+-------+-------+-------+--------------|                    |--------+--------+--------+--------+-----------+------------|
-       KC_LSFT,   KC_Z,   KC_X,   KC_C,   KC_V,          KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, TD(TD_SLH),     KC_RSFT,
-  //|---------+-------+-------+-------+-------+--------------+--------|  |--------+--------+--------+--------+--------+-----------+------------|
-                                       KC_LGUI,         MO(1),  KC_SPC,     KC_ENT,   MO(2), TD(TD_ALT)
-                                   //`--------------------------------'  `--------------------------'
+  //,-------------------------------------------------.                     ,------------------------------------------------------------.
+   LT(3, KC_ESC),   KC_Q,   KC_W,   KC_E,   KC_R, KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,       KC_P,     KC_BSPC,
+  //|-----------+-------+-------+-------+-------+-----|                     |--------+--------+--------+--------+-----------+------------|
+  LCTL_T(KC_TAB),   KC_A,   KC_S,   KC_D,   KC_F, KC_G,                          KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, TD(TD_TILD),
+  //|-----------+-------+-------+-------+-------+-----|                     |--------+--------+--------+--------+-----------+------------|
+         KC_LSFT,   KC_Z,   KC_X,   KC_C,   KC_V, KC_B,                          KC_N,    KC_M, KC_COMM,  KC_DOT, TD(TD_SLH),     KC_RSFT,
+  //|-----------+-------+-------+-------+-------+------+--------|  |--------+--------+--------+--------+--------+-----------+------------|
+                                         KC_LGUI, MO(1),  KC_SPC,     KC_ENT,   MO(2), TD(TD_ALT)
+                                     //`------------------------'  `--------------------------'
 
   ),
 
@@ -55,9 +52,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-------------------------------------------------------------.                    ,------------------------------------------------------.
        KC_TAB, XXXXXXX, XXXXXXX,     XXXXXXX,     XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX,    KC_UP, XXXXXXX, KC_PSCR,  KC_DEL,
   //|--------+--------+--------+------------+------------+--------|                    |--------+--------+---------+--------+--------+--------|
-      KC_LCTL, XXXXXXX, XXXXXXX, TD(TD_NAVL), TD(TD_NAVR), XXXXXXX,                      XXXXXXX, KC_LEFT,  KC_DOWN,KC_RIGHT, KC_PGUP, KC_HOME,
+      KC_LCTL, XXXXXXX, XXXXXXX, TD(TD_NAVL), TD(TD_NAVR), XXXXXXX,                      KC_PGUP, KC_LEFT,  KC_DOWN,KC_RIGHT, KC_HOME, XXXXXXX,
   //|--------+--------+--------+------------+------------+--------|                    |--------+--------+---------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX,     XXXXXXX,     XXXXXXX, XXXXXXX,                      XXXXXXX, KC_MPRV,  KC_MPLY, KC_MNXT, KC_PGDN,  KC_END,
+      KC_LSFT, XXXXXXX, XXXXXXX,     XXXXXXX,     XXXXXXX, XXXXXXX,                      KC_PGDN, KC_MPRV,  KC_MPLY, KC_MNXT,  KC_END, KC_RSFT,
   //|--------+--------+--------+------------+------------+--------+--------|  |--------+--------+--------+---------+--------+--------+--------|
                                                   KC_LGUI, _______,  KC_SPC,     KC_ENT,   MO(4), TD(TD_ALT)
                                               //`--------------------------'  `--------------------------'
@@ -69,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------------|
       XXXXXXX, KC_TILD, XXXXXXX, KC_LCBR, KC_RCBR, XXXXXXX,                       KC_DLR, XXXXXXX, KC_AMPR, KC_EXLM, XXXXXXX,       KC_MINS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------------|
-      XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_RBRC, XXXXXXX,                      KC_HASH, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LSFT(KC_MINS),
+      XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_RBRC, XXXXXXX,                      KC_HASH, XXXXXXX,   KC_LT,   KC_GT, XXXXXXX, RSFT(KC_MINS),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------------|
                                           KC_LGUI,   MO(4),  KC_SPC,     KC_ENT, _______, TD(TD_ALT)
                                       //`--------------------------'  `--------------------------'
@@ -77,9 +74,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   TD(TD_ADD),    KC_7,    KC_8,    KC_9, KC_CIRC, KC_BSPC,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PMNS,    KC_7,    KC_8,    KC_9, KC_PPLS, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   TD(TD_MUL),    KC_4,    KC_5,    KC_6,   KC_LT,   KC_GT,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PSLS,    KC_4,    KC_5,    KC_6, KC_PAST, KC_CIRC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         KC_0,    KC_1,    KC_2,    KC_3,  KC_EQL, KC_EXLM,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -106,11 +103,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_TILD] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_GRV),
     [TD_SLH] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_BSLS),
     // functional keys tap dances
-    [TD_TESC] = ACTION_TAP_DANCE_DOUBLE(KC_TAB, KC_ESC),
     [TD_ALT] = ACTION_TAP_DANCE_DOUBLE(KC_RALT, KC_LALT),
-    // operation tap dances
-    [TD_ADD] = ACTION_TAP_DANCE_DOUBLE(KC_PPLS, KC_PMNS),
-    [TD_MUL] = ACTION_TAP_DANCE_DOUBLE(KC_PAST, KC_PSLS),
     // navigation tap dances
     [TD_NAVL] = ACTION_TAP_DANCE_DOUBLE(LGUI(KC_TAB), LCTL(LGUI(KC_LEFT))),
     [TD_NAVR] = ACTION_TAP_DANCE_DOUBLE(LALT(KC_TAB), LCTL(LGUI(KC_RIGHT))),
