@@ -30,8 +30,6 @@ enum {
     TD_TILD,
     TD_SLH,
     TD_ALT,
-    TD_NAVL,
-    TD_NAVR,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -49,15 +47,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [1] = LAYOUT_split_3x6_3(
-  //,-------------------------------------------------------------.                    ,------------------------------------------------------.
-       KC_TAB, XXXXXXX, XXXXXXX,     XXXXXXX,     XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX,    KC_UP, XXXXXXX, KC_PSCR,  KC_DEL,
-  //|--------+--------+--------+------------+------------+--------|                    |--------+--------+---------+--------+--------+--------|
-      KC_LCTL, XXXXXXX, XXXXXXX, TD(TD_NAVL), TD(TD_NAVR), XXXXXXX,                      KC_PGUP, KC_LEFT,  KC_DOWN,KC_RIGHT, KC_HOME, XXXXXXX,
-  //|--------+--------+--------+------------+------------+--------|                    |--------+--------+---------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX,     XXXXXXX,     XXXXXXX, XXXXXXX,                      KC_PGDN, KC_MPRV,  KC_MPLY, KC_MNXT,  KC_END, KC_RSFT,
-  //|--------+--------+--------+------------+------------+--------+--------|  |--------+--------+--------+---------+--------+--------+--------|
-                                                  KC_LGUI, _______,  KC_SPC,     KC_ENT,   MO(4), TD(TD_ALT)
-                                              //`--------------------------'  `--------------------------'
+  //,-----------------------------------------------------.                    ,------------------------------------------------------.
+       KC_TAB, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX,    KC_UP, XXXXXXX, KC_PSCR,  KC_DEL,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+---------+--------+--------+--------|
+      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PGUP, KC_LEFT,  KC_DOWN,KC_RIGHT, KC_HOME, XXXXXXX,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+---------+--------+--------+--------|
+      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PGDN, KC_MPRV,  KC_MPLY, KC_MNXT,  KC_END, KC_RSFT,
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+---------+--------+--------+--------|
+                                          KC_LGUI, _______,  KC_SPC,     KC_ENT,   MO(4), TD(TD_ALT)
+                                      //`--------------------------'  `--------------------------'
   ),
 
   [2] = LAYOUT_split_3x6_3(
@@ -104,9 +102,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_SLH] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_BSLS),
     // functional keys tap dances
     [TD_ALT] = ACTION_TAP_DANCE_DOUBLE(KC_RALT, KC_LALT),
-    // navigation tap dances
-    [TD_NAVL] = ACTION_TAP_DANCE_DOUBLE(LGUI(KC_TAB), LCTL(LGUI(KC_LEFT))),
-    [TD_NAVR] = ACTION_TAP_DANCE_DOUBLE(LALT(KC_TAB), LCTL(LGUI(KC_RIGHT))),
 };
 
 #ifdef OLED_ENABLE
