@@ -3,9 +3,8 @@
 
 #define L_QWERTY 0
 #define L_NAVIGATE 2
-#define L_SYMBOLS 4
-#define L_NUMPAD 8
-#define L_ADJUST 16
+#define L_NUMPAD 4
+#define L_ADJUST 8
 
 // Key Overrides                                                         Key      Replacement
 const key_override_t pipe_key_override   = ko_make_basic(MOD_MASK_SHIFT, KC_PIPE, KC_QUES);
@@ -17,19 +16,23 @@ enum {
   TD_TILD,
   TD_SLH,
   TD_ALT,
+  TD_USCR,
+  TD_DEL,
+  TD_AND,
+  TD_OR,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x6_3(
-  //,-------------------------------------------------------------------.                       ,------------------------------------------------------------------------.
-    LT(3, KC_ESC),      KC_Q,      KC_W,      KC_E,      KC_R,      KC_T,                              KC_Y,      KC_U,      KC_I,      KC_O,         KC_P,       KC_BSPC,
-  //|-----24-----+----23----+----18----+----17----+----10----+-----9----|                       |----36----+----37----+----44----+----45----+-------50----+--------51----|
-          KC_LCTL,      KC_A,      KC_S,      KC_D,      KC_F,      KC_G,                              KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   TD(TD_TILD),
-  //|-----25-----+----22----+----19----+----16----+----11----+----8-----|                       |----35----+----38----+----43----+----46----+-------49----+--------52----|
-          KC_LSFT,      KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,                              KC_N,      KC_M,   KC_COMM,    KC_DOT,   TD(TD_SLH),       KC_RSFT,
-  //|-----26-----+----21----+----20----+----15----+----12----+----7-----+---------|  |----------+----34----+----39----+----42----+----47----+-------48----+--------53----|
-                                                      KC_LGUI,     MO(1),   KC_SPC,       KC_ENT,     MO(2), TD(TD_ALT)
-                                                //`----14----+----13----+----6----'  `----33----+----40----+----41----'
+  //,-------------------------------------------------------------------.                       ,--------------------------------------------------------------------------.
+    LT(2, KC_ESC),      KC_Q,      KC_W,      KC_E,      KC_R,      KC_T,                                KC_Y,      KC_U,TD(TD_AND), TD(TD_OR),         KC_P,       KC_BSPC,
+  //|-----24-----+----23----+----18----+----17----+----10----+-----9----|                       |------36----+----37----+----44----+----45----+-------50----+--------51----|
+          KC_LCTL,      KC_A,      KC_S,      KC_D,      KC_F,      KC_G,                                KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   TD(TD_TILD),
+  //|-----25-----+----22----+----19----+----16----+----11----+----8-----|                       |------35----+----38----+----43----+----46----+-------49----+--------52----|
+          KC_LSFT,      KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,                                KC_N,      KC_M,   KC_COMM,    KC_DOT,   TD(TD_SLH),       KC_RSFT,
+  //|-----26-----+----21----+----20----+----15----+----12----+----7-----+---------|  |----------+------34----+----39----+----42----+----47----+-------48----+--------53----|
+                                                      KC_LGUI,     MO(1),   KC_SPC,       KC_ENT,LT(3,KC_TAB), TD(TD_ALT)
+                                                //`----14----+----13----+----6----'  `----33----+------40----+----41----'
   ),
 
   [1] = LAYOUT_split_3x6_3(
@@ -40,35 +43,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-----25-----+----22----+----19----+----16----+----11----+----8-----|                       |----35----+----38----+----43----+----46----+-------49----+--------52----|
           KC_LSFT,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                           KC_PGDN,   KC_MPRV,   KC_MPLY,   KC_MNXT,       KC_END,       KC_RSFT,
   //|-----26-----+----21----+----20----+----15----+----12----+----7-----+---------|  |----------+----34----+----39----+----42----+----47----+-------48----+--------53----|
-                                                      KC_LGUI,   _______,   KC_SPC,       KC_ENT,     MO(4), TD(TD_ALT)
+                                                      KC_LGUI,   _______,   KC_SPC,       KC_ENT,     MO(3), TD(TD_ALT)
                                                 //`----14----+----13----+----6----'  `----33----+----40----+----41----'
   ),
 
   [2] = LAYOUT_split_3x6_3(
   //,-------------------------------------------------------------------.                       ,------------------------------------------------------------------------.
-          XXXXXXX,     KC_AT,   XXXXXXX,   KC_LPRN,   KC_RPRN,   XXXXXXX,                           KC_PERC,   XXXXXXX,   KC_AMPR,   KC_PIPE,      XXXXXXX,       KC_BSPC,
+          XXXXXXX,   XXXXXXX,   KC_LPRN,   KC_RPRN,   XXXXXXX,   XXXXXXX,                       TD(TD_USCR),      KC_7,      KC_8,      KC_9,      KC_PPLS,    TD(TD_DEL),
   //|-----24-----+----23----+----18----+----17----+----10----+-----9----|                       |----36----+----37----+----44----+----45----+-------50----+--------51----|
-          XXXXXXX,   KC_TILD,   XXXXXXX,   KC_LCBR,   KC_RCBR,   XXXXXXX,                            KC_DLR,   XXXXXXX,   XXXXXXX,   XXXXXXX,      XXXXXXX,       KC_MINS,
+            KC_AT,   XXXXXXX,     KC_LT,     KC_GT,   KC_LCBR,   KC_RCBR,                           KC_PSLS,      KC_4,      KC_5,      KC_6,      KC_PAST,       KC_CIRC,
   //|-----25-----+----22----+----19----+----16----+----11----+----8-----|                       |----35----+----38----+----43----+----46----+-------49----+--------52----|
-          XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_LBRC,   KC_RBRC,   XXXXXXX,                           KC_HASH,   XXXXXXX,   XXXXXXX,   XXXXXXX,      XXXXXXX, RSFT(KC_MINS),
+          KC_TILD,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_LBRC,   KC_RBRC,                           KC_EXLM,      KC_1,      KC_2,      KC_3,       KC_EQL,       KC_HASH,
   //|-----26-----+----21----+----20----+----15----+----12----+----7-----+---------|  |----------+----34----+----39----+----42----+----47----+-------48----+--------53----|
-                                                      KC_LGUI,     MO(4),   KC_SPC,       KC_ENT,   _______, TD(TD_ALT)
+                                                      KC_LGUI,    KC_DLR,   KC_SPC,       KC_ENT,   KC_PERC,      KC_0
                                                 //`----14----+----13----+----6----'  `----33----+----40----+----41----'
   ),
 
   [3] = LAYOUT_split_3x6_3(
-  //,-------------------------------------------------------------------.                       ,------------------------------------------------------------------------.
-          XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                           KC_PMNS,      KC_7,      KC_8,      KC_9,      KC_PPLS,       KC_BSPC,
-  //|-----24-----+----23----+----18----+----17----+----10----+-----9----|                       |----36----+----37----+----44----+----45----+-------50----+--------51----|
-          XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                           KC_PSLS,      KC_4,      KC_5,      KC_6,      KC_PAST,       KC_CIRC,
-  //|-----25-----+----22----+----19----+----16----+----11----+----8-----|                       |----35----+----38----+----43----+----46----+-------49----+--------52----|
-          XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                           KC_EXLM,      KC_1,      KC_2,      KC_3,       KC_EQL,       XXXXXXX,
-  //|-----26-----+----21----+----20----+----15----+----12----+----7-----+---------|  |----------+----34----+----39----+----42----+----47----+-------48----+--------53----|
-                                                      KC_LGUI,   _______,   KC_SPC,       KC_ENT,   _______,      KC_0
-                                                //`----14----+----13----+----6----'  `----33----+----40----+----41----'
-  ),
-
-  [4] = LAYOUT_split_3x6_3(
   //,-------------------------------------------------------------------.                       ,------------------------------------------------------------------------.
           QK_BOOT,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                           XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,      XXXXXXX,       XXXXXXX,
   //|-----24-----+----23----+----18----+----17----+----10----+-----9----|                       |----36----+----37----+----44----+----45----+-------50----+--------51----|
@@ -88,7 +79,7 @@ void matrix_init_user(void) {
 }
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
   #ifdef RGB_MATRIX_ENABLE
-    if(layer_state == L_SYMBOLS || layer_state == L_NAVIGATE || layer_state == L_NUMPAD) {
+    if(layer_state == L_NAVIGATE || layer_state == L_NUMPAD) {
       for (int i = 0; i < 54; i++) {
         RGB_MATRIX_INDICATOR_SET_COLOR(i, 0, 0, 0);
       }
@@ -111,58 +102,46 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
           RGB_MATRIX_INDICATOR_SET_COLOR(35, 0,204,0);
           RGB_MATRIX_INDICATOR_SET_COLOR(49, 0,204,0);
           // other
-          RGB_MATRIX_INDICATOR_SET_COLOR(6, 127,127,127);
-          RGB_MATRIX_INDICATOR_SET_COLOR(14, 127,127,127);
-          RGB_MATRIX_INDICATOR_SET_COLOR(24, 127,127,127);
-          RGB_MATRIX_INDICATOR_SET_COLOR(25, 127,127,127);
-          RGB_MATRIX_INDICATOR_SET_COLOR(26, 127,127,127);
-          RGB_MATRIX_INDICATOR_SET_COLOR(33, 127,127,127);
-          RGB_MATRIX_INDICATOR_SET_COLOR(40, 127,127,127);
-          RGB_MATRIX_INDICATOR_SET_COLOR(41, 127,127,127);
-          RGB_MATRIX_INDICATOR_SET_COLOR(50, 127,127,127);
-          RGB_MATRIX_INDICATOR_SET_COLOR(51, 127,127,127);
-          RGB_MATRIX_INDICATOR_SET_COLOR(53, 127,127,127);
-      break;
-
-      case L_SYMBOLS:
-        //braces
-        RGB_MATRIX_INDICATOR_SET_COLOR(10, 204,0,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(17, 204,0,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(11, 204,102,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(16, 204,102,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(12, 204,204,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(15, 204,204,0);
-        //other symbols
-        RGB_MATRIX_INDICATOR_SET_COLOR(22, 204,102,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(23, 204,0,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(34, 51,255,255);
-        RGB_MATRIX_INDICATOR_SET_COLOR(35, 0,204,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(36, 127,0,255);
-        RGB_MATRIX_INDICATOR_SET_COLOR(44, 127,0,255);
-        RGB_MATRIX_INDICATOR_SET_COLOR(45, 127,0,255);
-        RGB_MATRIX_INDICATOR_SET_COLOR(52, 0,204,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(53, 51,255,255);
-        // other
-        RGB_MATRIX_INDICATOR_SET_COLOR(6, 127,127,127);
-        RGB_MATRIX_INDICATOR_SET_COLOR(13, 127,127,127);
-        RGB_MATRIX_INDICATOR_SET_COLOR(14, 127,127,127);
-        RGB_MATRIX_INDICATOR_SET_COLOR(33, 127,127,127);
-        RGB_MATRIX_INDICATOR_SET_COLOR(41, 127,127,127);
-        RGB_MATRIX_INDICATOR_SET_COLOR(51, 127,127,127);
+          RGB_MATRIX_INDICATOR_SET_COLOR(6, 63,63,63);
+          RGB_MATRIX_INDICATOR_SET_COLOR(14, 63,63,63);
+          RGB_MATRIX_INDICATOR_SET_COLOR(24, 63,63,63);
+          RGB_MATRIX_INDICATOR_SET_COLOR(25, 63,63,63);
+          RGB_MATRIX_INDICATOR_SET_COLOR(26, 63,63,63);
+          RGB_MATRIX_INDICATOR_SET_COLOR(33, 63,63,63);
+          RGB_MATRIX_INDICATOR_SET_COLOR(40, 63,63,63);
+          RGB_MATRIX_INDICATOR_SET_COLOR(41, 63,63,63);
+          RGB_MATRIX_INDICATOR_SET_COLOR(50, 63,63,63);
+          RGB_MATRIX_INDICATOR_SET_COLOR(51, 63,63,63);
+          RGB_MATRIX_INDICATOR_SET_COLOR(53, 63,63,63);
       break;
 
       case L_NUMPAD:
+        //symbols
+        RGB_MATRIX_INDICATOR_SET_COLOR(17, 204,0,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(18, 204,0,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(8, 204,102,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(11, 204,102,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(16, 204,102,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(19, 204,102,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(7, 204,204,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(12, 204,204,0);
+        //other symbols
+        RGB_MATRIX_INDICATOR_SET_COLOR(25, 204,102,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(26, 204,204,0);
         // decrease
-        RGB_MATRIX_INDICATOR_SET_COLOR(34, 204,102,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(35, 204,0,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(36, 204,0,0);
-        // equal
+        RGB_MATRIX_INDICATOR_SET_COLOR(34, 204,204,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(35, 204,102,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(36, 204,102,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(40, 204,204,0);
+        // equal and money
+        RGB_MATRIX_INDICATOR_SET_COLOR(13, 0,204,0);
         RGB_MATRIX_INDICATOR_SET_COLOR(48, 0,204,0);
         // increase
         RGB_MATRIX_INDICATOR_SET_COLOR(49, 0,0,204);
         RGB_MATRIX_INDICATOR_SET_COLOR(50, 0,0,204);
         // exp
         RGB_MATRIX_INDICATOR_SET_COLOR(52, 127,0,255);
+        RGB_MATRIX_INDICATOR_SET_COLOR(53, 127,0,255);
         //numbers
         RGB_MATRIX_INDICATOR_SET_COLOR(37, 0,204,204);
         RGB_MATRIX_INDICATOR_SET_COLOR(38, 0,204,204);
@@ -175,10 +154,10 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         RGB_MATRIX_INDICATOR_SET_COLOR(46, 0,204,204);
         RGB_MATRIX_INDICATOR_SET_COLOR(47, 0,204,204);
         // other
-        RGB_MATRIX_INDICATOR_SET_COLOR(6, 127,127,127);
-        RGB_MATRIX_INDICATOR_SET_COLOR(14, 127,127,127);
-        RGB_MATRIX_INDICATOR_SET_COLOR(33, 127,127,127);
-        RGB_MATRIX_INDICATOR_SET_COLOR(51, 127,127,127);
+        RGB_MATRIX_INDICATOR_SET_COLOR(6, 63,63,63);
+        RGB_MATRIX_INDICATOR_SET_COLOR(14, 63,63,63);
+        RGB_MATRIX_INDICATOR_SET_COLOR(33, 63,63,63);
+        RGB_MATRIX_INDICATOR_SET_COLOR(51, 63,63,63);
       break;
     }
     return true;
@@ -189,9 +168,13 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 tap_dance_action_t tap_dance_actions[] = {
     // char tap dances
     [TD_TILD] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_GRV),
-    [TD_SLH] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_BSLS),
+    [TD_SLH]  = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_BSLS),
+    [TD_USCR] = ACTION_TAP_DANCE_DOUBLE(KC_MINS, RSFT(KC_MINS)),
+    [TD_DEL]  = ACTION_TAP_DANCE_DOUBLE(KC_BSPC, KC_DEL),
+    [TD_AND]  = ACTION_TAP_DANCE_DOUBLE(KC_I, KC_AMPR),
+    [TD_OR]   = ACTION_TAP_DANCE_DOUBLE(KC_O, KC_PIPE),
     // functional keys tap dances
-    [TD_ALT] = ACTION_TAP_DANCE_DOUBLE(KC_RALT, KC_LALT),
+    [TD_ALT]  = ACTION_TAP_DANCE_DOUBLE(KC_RALT, KC_LALT),
 };
 
 #ifdef OLED_ENABLE
@@ -211,16 +194,11 @@ tap_dance_action_t tap_dance_actions[] = {
           case L_NAVIGATE:
               oled_write_ln_P(PSTR("Navigate"), false);
               break;
-          case L_SYMBOLS:
-              oled_write_ln_P(PSTR("Symbols"), false);
-              break;
           case L_NUMPAD:
               oled_write_ln_P(PSTR("Numpad"), false);
               break;
           case L_ADJUST:
           case L_ADJUST|L_NAVIGATE:
-          case L_ADJUST|L_SYMBOLS:
-          case L_ADJUST|L_NAVIGATE|L_SYMBOLS:
           default:
               oled_write_ln_P(PSTR("Adjust"), false);
               break;
