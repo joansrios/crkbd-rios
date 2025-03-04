@@ -16,23 +16,19 @@ enum {
   TD_TILD,
   TD_SLH,
   TD_ALT,
-  TD_USCR,
-  TD_DEL,
-  TD_AND,
-  TD_OR,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x6_3(
-  //,-------------------------------------------------------------------.                       ,--------------------------------------------------------------------------.
-    LT(2, KC_ESC),      KC_Q,      KC_W,      KC_E,      KC_R,      KC_T,                                KC_Y,      KC_U,TD(TD_AND), TD(TD_OR),         KC_P,       KC_BSPC,
-  //|-----24-----+----23----+----18----+----17----+----10----+-----9----|                       |------36----+----37----+----44----+----45----+-------50----+--------51----|
-          KC_LCTL,      KC_A,      KC_S,      KC_D,      KC_F,      KC_G,                                KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   TD(TD_TILD),
-  //|-----25-----+----22----+----19----+----16----+----11----+----8-----|                       |------35----+----38----+----43----+----46----+-------49----+--------52----|
-          KC_LSFT,      KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,                                KC_N,      KC_M,   KC_COMM,    KC_DOT,   TD(TD_SLH),       KC_RSFT,
-  //|-----26-----+----21----+----20----+----15----+----12----+----7-----+---------|  |----------+------34----+----39----+----42----+----47----+-------48----+--------53----|
-                                                      KC_LGUI,     MO(1),   KC_SPC,       KC_ENT,LT(3,KC_TAB), TD(TD_ALT)
-                                                //`----14----+----13----+----6----'  `----33----+------40----+----41----'
+  //,---------------------------------------------------------------------.                       ,--------------------------------------------------------------------------.
+    LT(2, KC_ESC),      KC_Q,      KC_W,      KC_E,      KC_R,        KC_T,                                KC_Y,      KC_U,      KC_I,      KC_O,         KC_P,       KC_BSPC,
+  //|-----24-----+----23----+----18----+----17----+----10----+-------9----|                       |------36----+----37----+----44----+----45----+-------50----+--------51----|
+          KC_LCTL,      KC_A,      KC_S,      KC_D,      KC_F,        KC_G,                                KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   TD(TD_TILD),
+  //|-----25-----+----22----+----19----+----16----+----11----+------8-----|                       |------35----+----38----+----43----+----46----+-------49----+--------52----|
+          KC_LSFT,      KC_Z,      KC_X,      KC_C,      KC_V,        KC_B,                                KC_N,      KC_M,   KC_COMM,    KC_DOT,   TD(TD_SLH),       KC_RSFT,
+  //|-----26-----+----21----+----20----+----15----+----12----+------7-----+---------|  |----------+------34----+----39----+----42----+----47----+-------48----+--------53----|
+                                                      KC_LGUI,LT(1,KC_TAB),   KC_SPC,       KC_ENT,LT(3,KC_TAB), TD(TD_ALT)
+                                                //`----14----+------13----+----6----'  `----33----+------40----+----41----'
   ),
 
   [1] = LAYOUT_split_3x6_3(
@@ -48,15 +44,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [2] = LAYOUT_split_3x6_3(
-  //,-------------------------------------------------------------------.                       ,------------------------------------------------------------------------.
-          XXXXXXX,   XXXXXXX,   KC_LPRN,   KC_RPRN,   XXXXXXX,   XXXXXXX,                       TD(TD_USCR),      KC_7,      KC_8,      KC_9,      KC_PPLS,    TD(TD_DEL),
-  //|-----24-----+----23----+----18----+----17----+----10----+-----9----|                       |----36----+----37----+----44----+----45----+-------50----+--------51----|
-            KC_AT,   XXXXXXX,     KC_LT,     KC_GT,   KC_LCBR,   KC_RCBR,                           KC_PSLS,      KC_4,      KC_5,      KC_6,      KC_PAST,       KC_CIRC,
-  //|-----25-----+----22----+----19----+----16----+----11----+----8-----|                       |----35----+----38----+----43----+----46----+-------49----+--------52----|
-          KC_TILD,   XXXXXXX,   XXXXXXX,   XXXXXXX,   KC_LBRC,   KC_RBRC,                           KC_EXLM,      KC_1,      KC_2,      KC_3,       KC_EQL,       KC_HASH,
-  //|-----26-----+----21----+----20----+----15----+----12----+----7-----+---------|  |----------+----34----+----39----+----42----+----47----+-------48----+--------53----|
-                                                      KC_LGUI,    KC_DLR,   KC_SPC,       KC_ENT,   KC_PERC,      KC_0
-                                                //`----14----+----13----+----6----'  `----33----+----40----+----41----'
+  //,----------------------------------------------------------------------.                       ,------------------------------------------------------------------------.
+          XXXXXXX,     KC_AT,   KC_LPRN,   KC_RPRN,   XXXXXXX,RSFT(KC_MINS),                           KC_MINS,      KC_7,      KC_8,      KC_9,      KC_PPLS,       KC_BSPC,
+  //|-----24-----+----23----+----18----+----17----+----10----+--------9----|                       |----36----+----37----+----44----+----45----+-------50----+--------51----|
+          XXXXXXX,   KC_TILD,   KC_LCBR,   KC_RCBR,     KC_LT,        KC_GT,                           KC_PSLS,      KC_4,      KC_5,      KC_6,      KC_PAST,       KC_CIRC,
+  //|-----25-----+----22----+----19----+----16----+----11----+-------8-----|                       |----35----+----38----+----43----+----46----+-------49----+--------52----|
+          XXXXXXX,   XXXXXXX,   KC_LBRC,   KC_RBRC,   KC_AMPR,      KC_PIPE,                           KC_EXLM,      KC_1,      KC_2,      KC_3,       KC_EQL,       KC_HASH,
+  //|-----26-----+----21----+----20----+----15----+----12----+-------7-----+---------|  |----------+----34----+----39----+----42----+----47----+-------48----+--------53----|
+                                                      KC_LGUI,       KC_DLR,   KC_SPC,       KC_ENT,   KC_PERC,      KC_0
+                                                //`----14----+-------13----+----6----'  `----33----+----40----+----41----'
   ),
 
   [3] = LAYOUT_split_3x6_3(
@@ -117,17 +113,19 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
       case L_NUMPAD:
         //symbols
-        RGB_MATRIX_INDICATOR_SET_COLOR(17, 204,0,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(18, 204,0,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(9, 204,0,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(17, 255,0,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(18, 255,0,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(23, 204,0,0);
         RGB_MATRIX_INDICATOR_SET_COLOR(8, 204,102,0);
         RGB_MATRIX_INDICATOR_SET_COLOR(11, 204,102,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(16, 204,102,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(19, 204,102,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(16, 255,127,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(19, 255,127,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(22, 204,102,0);
         RGB_MATRIX_INDICATOR_SET_COLOR(7, 204,204,0);
         RGB_MATRIX_INDICATOR_SET_COLOR(12, 204,204,0);
-        //other symbols
-        RGB_MATRIX_INDICATOR_SET_COLOR(25, 204,102,0);
-        RGB_MATRIX_INDICATOR_SET_COLOR(26, 204,204,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(15, 255,255,0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(20, 255,255,0);
         // decrease
         RGB_MATRIX_INDICATOR_SET_COLOR(34, 204,204,0);
         RGB_MATRIX_INDICATOR_SET_COLOR(35, 204,102,0);
@@ -169,10 +167,6 @@ tap_dance_action_t tap_dance_actions[] = {
     // char tap dances
     [TD_TILD] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_GRV),
     [TD_SLH]  = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_BSLS),
-    [TD_USCR] = ACTION_TAP_DANCE_DOUBLE(KC_MINS, RSFT(KC_MINS)),
-    [TD_DEL]  = ACTION_TAP_DANCE_DOUBLE(KC_BSPC, KC_DEL),
-    [TD_AND]  = ACTION_TAP_DANCE_DOUBLE(KC_I, KC_AMPR),
-    [TD_OR]   = ACTION_TAP_DANCE_DOUBLE(KC_O, KC_PIPE),
     // functional keys tap dances
     [TD_ALT]  = ACTION_TAP_DANCE_DOUBLE(KC_RALT, KC_LALT),
 };
