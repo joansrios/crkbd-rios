@@ -27,7 +27,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-----25-----+----22----+----19----+----16----+----11----+------8-----|                       |------35----+----38----+----43----+----46----+-------49----+--------52----|
           KC_LSFT,      KC_Z,      KC_X,      KC_C,      KC_V,        KC_B,                                KC_N,      KC_M,   KC_COMM,    KC_DOT,   TD(TD_SLH),       KC_RSFT,
   //|-----26-----+----21----+----20----+----15----+----12----+------7-----+---------|  |----------+------34----+----39----+----42----+----47----+-------48----+--------53----|
-                                                      KC_LGUI,LT(1,KC_TAB),   KC_SPC,       KC_ENT,LT(3,KC_TAB), TD(TD_ALT)
+                                                      KC_LGUI,LT(3,KC_TAB),   KC_SPC,       KC_ENT,LT(1,KC_TAB), TD(TD_ALT)
                                                 //`----14----+------13----+----6----'  `----33----+------40----+----41----'
   ),
 
@@ -39,13 +39,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-----25-----+----22----+----19----+----16----+----11----+----8-----|                       |----35----+----38----+----43----+----46----+-------49----+--------52----|
           KC_LSFT,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                           KC_PGDN,   KC_MPRV,   KC_MPLY,   KC_MNXT,       KC_END,       KC_RSFT,
   //|-----26-----+----21----+----20----+----15----+----12----+----7-----+---------|  |----------+----34----+----39----+----42----+----47----+-------48----+--------53----|
-                                                      KC_LGUI,   _______,   KC_SPC,       KC_ENT,     MO(3), TD(TD_ALT)
+                                                      KC_LGUI,   _______,   KC_SPC,       KC_ENT,   _______, TD(TD_ALT)
                                                 //`----14----+----13----+----6----'  `----33----+----40----+----41----'
   ),
 
   [2] = LAYOUT_split_3x6_3(
   //,----------------------------------------------------------------------.                       ,------------------------------------------------------------------------.
-          XXXXXXX,     KC_AT,   KC_LPRN,   KC_RPRN,   XXXXXXX,RSFT(KC_MINS),                           KC_MINS,      KC_7,      KC_8,      KC_9,      KC_PPLS,       KC_BSPC,
+          _______,     KC_AT,   KC_LPRN,   KC_RPRN,   XXXXXXX,RSFT(KC_MINS),                           KC_MINS,      KC_7,      KC_8,      KC_9,      KC_PPLS,       KC_BSPC,
   //|-----24-----+----23----+----18----+----17----+----10----+--------9----|                       |----36----+----37----+----44----+----45----+-------50----+--------51----|
           XXXXXXX,   KC_TILD,   KC_LCBR,   KC_RCBR,     KC_LT,        KC_GT,                           KC_PSLS,      KC_4,      KC_5,      KC_6,      KC_PAST,       KC_CIRC,
   //|-----25-----+----22----+----19----+----16----+----11----+-------8-----|                       |----35----+----38----+----43----+----46----+-------49----+--------52----|
@@ -104,7 +104,6 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
           RGB_MATRIX_INDICATOR_SET_COLOR(25, 63,63,63);
           RGB_MATRIX_INDICATOR_SET_COLOR(26, 63,63,63);
           RGB_MATRIX_INDICATOR_SET_COLOR(33, 63,63,63);
-          RGB_MATRIX_INDICATOR_SET_COLOR(40, 63,63,63);
           RGB_MATRIX_INDICATOR_SET_COLOR(41, 63,63,63);
           RGB_MATRIX_INDICATOR_SET_COLOR(50, 63,63,63);
           RGB_MATRIX_INDICATOR_SET_COLOR(51, 63,63,63);
